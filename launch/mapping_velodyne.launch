@@ -1,0 +1,13 @@
+<launch>
+  <!-- Launch file for velodyne16 VLP-16 LiDAR -->
+
+    <arg name="rviz" default="true" />
+
+    <rosparam command="load" file="$(find c3p_voxelmap)/config/velodyne.yaml" />
+
+    <node pkg="c3p_voxelmap" type="c3p_voxelmap" name="c3p_voxelmap" output="screen"/>
+    <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find c3p_voxelmap)/rviz_cfg/c3p_voxelmap.rviz" />
+    </group>
+
+</launch>
